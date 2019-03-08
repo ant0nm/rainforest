@@ -41,12 +41,18 @@ def edit_view(request, id):
 
 
 def edit_product(request, id):
-    form = ProductForm(request.POST, instance=Product.objects.get(pk=id))
+    product = Product.objects.get(pk=id)
+    form = ProductForm(request.POST, instance=product)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/')
     else:
-        return render(request, 'new.html', {
-            'form': form
+        return render(request, 'edit.html', {
+            'form': form,
+            'product': product
         })
-    # return render(request, 'product.html', {'form': ProductForm(request.POST, instance=Product.objects.get(pk=id))})
+
+def delete_product(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return HttpResponseRedirect('/')
