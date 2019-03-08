@@ -1,1 +1,10 @@
-<h1>hi this is the products index</h1>
+<h1>Products</h1>
+<ul>
+  {% for product in products %}
+  <li>
+    <a href="#"><p>{{product.name}}</p></a>
+    <p>{{product.description}}</p>
+    <p>Price: {{product.price}}</p>
+  </li>
+  {% endfor %}
+</ul>
