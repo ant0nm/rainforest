@@ -8,13 +8,12 @@
     <nav>
       <ul>
         <a href="{% url 'products' %}"><li>Home</li></a>
+        <a href="{% url 'new_product' %}"><li>New Product</li></a>
       </ul>
     </nav>
   </header>
   <body>
-    <p>test</p>
     {% block content %}
-
     {% endblock %}
   </body>
 </html>
