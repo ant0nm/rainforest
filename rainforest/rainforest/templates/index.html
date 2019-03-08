@@ -1,10 +1,13 @@
-<h1>Products</h1>
-<ul>
-  {% for product in products %}
-  <li>
-    <a href="#"><p>{{product.name}}</p></a>
-    <p>{{product.description}}</p>
-    <p>Price: {{product.price}}</p>
-  </li>
-  {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Products</h1>
+  <ul>
+    {% for product in products %}
+    <li>
+      <a href="{% url 'show_product' id=product.id %}"><p>{{product.name}}</p></a>
+      <p>{{product.description}}</p>
+      <p>Price: {{product.price}}</p>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

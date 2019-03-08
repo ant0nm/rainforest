@@ -21,5 +21,5 @@ urlpatterns = [
     path('', root),
     path('admin/', admin.site.urls),
     path('products', list_products, name="products"),
-    path('prodcuts/<int:id>', show_product, name="show_product")
+    path('products/<int:id>', show_product, name="show_product")
 ]
