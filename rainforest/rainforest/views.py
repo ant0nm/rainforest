@@ -84,3 +84,9 @@ def edit_review(request, review_id):
             return HttpResponseRedirect("/products/"+ str(product.pk))
     else:
         return render(request, 'edit_review.html', context)
+
+
+def delete_review(request, review_id):
+    review = Review.objects.get(pk=review_id)
+    review.delete()
+    return HttpResponseRedirect(reverse('show_product', args=[review.product.id]))

@@ -7,6 +7,9 @@
     <input type="submit" name="submit_edit" >
 
   </form>
-
+  <form action="{% url 'delete_review' review_id=review.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+  </form>
   <a href="{% url 'show_product' product_id=product.id %}">BACK</a>
 {% endblock %}
