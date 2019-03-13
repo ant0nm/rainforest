@@ -11,4 +11,11 @@
     {% csrf_token %}
   <input type="submit" name="delete_button" value="Delete">
   </form>
+
+  <h3>Reviews</h3>
+  <ul>
+    {% for review in product.reviews.all %}
+      <li>{{review}}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
