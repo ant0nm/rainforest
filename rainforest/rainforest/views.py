@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from rainforest.models import Product
-from rainforest.forms import ProductForm
+from rainforest.forms import ProductForm, ReviewForm
+from django.urls import reverse
 
 
 def root(request):
@@ -16,7 +17,8 @@ def list_products(request):
 
 def show_product(request, id):
     return render(request, 'product.html', {
-        'product': Product.objects.get(pk=id)
+        'product': Product.objects.get(pk=id),
+        'form': ReviewForm()
     })
 
 
@@ -58,5 +60,14 @@ def delete_product(request, id):
     return HttpResponseRedirect('/')
 
 
-# def add_review(request):
-#     form = ReviewForm()
+def create_review(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        review = form.instance
+        review.product = product
+        review.save()
+        return HttpResponseRedirect(reverse('show_product', args=[product_id]))
+    else:
+        context = {'form': form}
+        return HttpResponse(request, 'product.html', context)

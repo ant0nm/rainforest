@@ -12,9 +12,10 @@
   <input type="submit" name="delete_button" value="Delete">
   </form>
   <h3>Add a Review</h3>
-  <form action="{}" method="POST">
+  <form action="{% url 'create_review' product_id=product.id %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
+    <input type="submit" value="Add review">
   </form>
   <h3>Reviews</h3>
   <ul>
