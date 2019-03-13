@@ -8,6 +8,7 @@
       <p>{{product.description}}</p>
       <p>Price: {{product.price_in_dollars}}</p>
     </li>
+    <p>Review(s): {{ product.reviews.count }}</p>
     {% endfor %}
   </ul>
 {% endblock %}

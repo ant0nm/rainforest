@@ -56,3 +56,7 @@ def delete_product(request, id):
     product = Product.objects.get(pk=id)
     product.delete()
     return HttpResponseRedirect('/')
+
+
+# def add_review(request):
+#     form = ReviewForm()
