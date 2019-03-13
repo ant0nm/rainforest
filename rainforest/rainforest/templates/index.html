@@ -6,7 +6,7 @@
     <li>
       <a href="{% url 'show_product' id=product.id %}"><p>{{product.name}}</p></a>
       <p>{{product.description}}</p>
-      <p>Price: {{product.price}}</p>
+      <p>Price: {{product.price_in_dollars}}</p>
     </li>
     {% endfor %}
   </ul>

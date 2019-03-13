@@ -12,3 +12,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def price_in_dollars(self):
+        dollars = self.price / 100
+        return "${:.2f}".format(dollars)
