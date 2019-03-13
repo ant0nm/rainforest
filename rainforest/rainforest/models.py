@@ -16,3 +16,10 @@ class Product(models.Model):
     def price_in_dollars(self):
         dollars = self.price / 100
         return "${:.2f}".format(dollars)
+
+class Review(models.Model):
+    comment = models.TextField(max_length=256)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
+
+    def __str__(self):
+        return self.comment
